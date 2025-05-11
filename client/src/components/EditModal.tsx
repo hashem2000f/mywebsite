@@ -49,10 +49,19 @@ export default function EditModal({ bookmark, onClose }: EditModalProps) {
       queryClient.invalidateQueries({ queryKey: ['/api/bookmarks'] });
       
       // Close modal
-      const modalElement = document.getElementById('editModal');
-      if (modalElement) {
-        const modal = window.bootstrap.Modal.getInstance(modalElement);
-        if (modal) modal.hide();
+      try {
+        const modalElement = document.getElementById('editModal');
+        if (modalElement && window.bootstrap?.Modal) {
+          const bsModal = window.bootstrap.Modal.getInstance(modalElement);
+          if (bsModal) {
+            bsModal.hide();
+          } else if (window.bootstrap.Modal) {
+            const newModal = new window.bootstrap.Modal(modalElement);
+            newModal.hide();
+          }
+        }
+      } catch (error) {
+        console.error('Error closing edit modal:', error);
       }
       
       // Reset form
@@ -81,10 +90,10 @@ export default function EditModal({ bookmark, onClose }: EditModalProps) {
   // Update form values when bookmark changes
   useEffect(() => {
     if (bookmark) {
-      setName(bookmark.name);
-      setUrl(bookmark.url);
-      setIconType(bookmark.iconType);
-      setIconColor(bookmark.iconColor);
+      setName(bookmark.name || '');
+      setUrl(bookmark.url || '');
+      setIconType(bookmark.iconType || 'fas fa-globe');
+      setIconColor(bookmark.iconColor || 'bg-primary');
     }
   }, [bookmark]);
 

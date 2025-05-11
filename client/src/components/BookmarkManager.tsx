@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import BookmarkForm from "./BookmarkForm";
 import BookmarkTable from "./BookmarkTable";
@@ -12,6 +12,8 @@ export default function BookmarkManager() {
   const [searchTerm, setSearchTerm] = useState("");
   const [editingBookmark, setEditingBookmark] = useState<Bookmark | null>(null);
   const [deletingBookmark, setDeletingBookmark] = useState<Bookmark | null>(null);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -19,6 +21,38 @@ export default function BookmarkManager() {
   const { data: bookmarks = [], isLoading, error } = useQuery<Bookmark[]>({
     queryKey: ['/api/bookmarks'],
   });
+
+  // Effect to initialize Bootstrap modals
+  useEffect(() => {
+    // Initialize modals when component mounts
+    const initModals = () => {
+      try {
+        const editModalEl = document.getElementById('editModal');
+        const deleteModalEl = document.getElementById('deleteModal');
+        
+        if (editModalEl && window.bootstrap) {
+          new window.bootstrap.Modal(editModalEl);
+        }
+        if (deleteModalEl && window.bootstrap) {
+          new window.bootstrap.Modal(deleteModalEl);
+        }
+      } catch (err) {
+        console.error('Error initializing Bootstrap modals:', err);
+      }
+    };
+    
+    // Wait for bootstrap to be available
+    const checkBootstrap = setInterval(() => {
+      if (window.bootstrap) {
+        initModals();
+        clearInterval(checkBootstrap);
+      }
+    }, 100);
+    
+    return () => {
+      clearInterval(checkBootstrap);
+    };
+  }, []);
 
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,26 +69,48 @@ export default function BookmarkManager() {
   // Handle edit button click
   const handleEditClick = (bookmark: Bookmark) => {
     setEditingBookmark(bookmark);
+    setShowEditModal(true);
     // Use Bootstrap modal API to show the modal
-    const modal = new window.bootstrap.Modal(document.getElementById('editModal'));
-    modal.show();
+    try {
+      const editModalEl = document.getElementById('editModal');
+      if (editModalEl && window.bootstrap) {
+        const modal = new window.bootstrap.Modal(editModalEl);
+        modal.show();
+      } else {
+        console.warn('Bootstrap or modal element not available');
+      }
+    } catch (err) {
+      console.error('Could not show edit modal:', err);
+    }
   };
 
   // Handle delete button click
   const handleDeleteClick = (bookmark: Bookmark) => {
     setDeletingBookmark(bookmark);
+    setShowDeleteModal(true);
     // Use Bootstrap modal API to show the modal
-    const modal = new window.bootstrap.Modal(document.getElementById('deleteModal'));
-    modal.show();
+    try {
+      const deleteModalEl = document.getElementById('deleteModal');
+      if (deleteModalEl && window.bootstrap) {
+        const modal = new window.bootstrap.Modal(deleteModalEl);
+        modal.show();
+      } else {
+        console.warn('Bootstrap or modal element not available');
+      }
+    } catch (err) {
+      console.error('Could not show delete modal:', err);
+    }
   };
 
   // Clear editing/deleting state after modal is closed
   const clearEditingState = () => {
     setEditingBookmark(null);
+    setShowEditModal(false);
   };
 
   const clearDeletingState = () => {
     setDeletingBookmark(null);
+    setShowDeleteModal(false);
   };
 
   return (
