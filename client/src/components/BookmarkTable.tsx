@@ -23,14 +23,14 @@ export default function BookmarkTable({ bookmarks, onEditClick, onDeleteClick }:
   };
 
   return (
-    <div className="table-container">
+    <div className="table-responsive table-container">
       <table className="table table-striped table-hover mb-0">
         <thead className="table-dark sticky-top">
           <tr>
-            <th style={{ width: "5%" }}>#</th>
-            <th style={{ width: "40%" }}>اسم الموقع</th>
-            <th style={{ width: "35%" }}>رابط الموقع</th>
-            <th style={{ width: "20%" }}>الإجراءات</th>
+            <th className="index-col">#</th>
+            <th className="name-col">اسم الموقع</th>
+            <th className="url-col">رابط الموقع</th>
+            <th className="actions-col">الإجراءات</th>
           </tr>
         </thead>
         <tbody id="bookmarksList">
@@ -42,13 +42,13 @@ export default function BookmarkTable({ bookmarks, onEditClick, onDeleteClick }:
                   <span className={`bookmark-icon ${bookmark.iconColor}`}>
                     <i className={bookmark.iconType}></i>
                   </span>
-                  <span>{bookmark.name}</span>
+                  <span className="ms-2 bookmark-name">{bookmark.name}</span>
                 </div>
               </td>
               <td>
-                <a href={bookmark.url} target="_blank" className="text-primary text-decoration-none" rel="noopener noreferrer">
+                <a href={bookmark.url} target="_blank" className="text-primary text-decoration-none url-link" rel="noopener noreferrer">
                   <i className="fas fa-external-link-alt me-1"></i>
-                  {extractDomain(bookmark.url)}
+                  <span className="url-text">{extractDomain(bookmark.url)}</span>
                 </a>
               </td>
               <td>
@@ -56,14 +56,18 @@ export default function BookmarkTable({ bookmarks, onEditClick, onDeleteClick }:
                   <button 
                     className="btn btn-sm btn-outline-primary me-1" 
                     onClick={() => onEditClick(bookmark)}
+                    aria-label="تعديل"
+                    title="تعديل بيانات الموقع"
                   >
-                    <i className="fas fa-edit"></i> تعديل
+                    <i className="fas fa-edit"></i> <span className="action-text">تعديل</span>
                   </button>
                   <button 
                     className="btn btn-sm btn-outline-danger" 
                     onClick={() => onDeleteClick(bookmark)}
+                    aria-label="حذف"
+                    title="حذف الموقع"
                   >
-                    <i className="fas fa-trash-alt"></i> حذف
+                    <i className="fas fa-trash-alt"></i> <span className="action-text">حذف</span>
                   </button>
                 </div>
               </td>

@@ -52,15 +52,34 @@ export default function DeleteModal({ bookmark, onClose }: DeleteModalProps) {
 
   return (
     <div className="modal fade" id="deleteModal" tabIndex={-1} aria-labelledby="deleteModalLabel" aria-hidden="true">
-      <div className="modal-dialog">
+      <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header bg-danger text-white">
             <h5 className="modal-title" id="deleteModalLabel">تأكيد الحذف</h5>
             <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={onClose}></button>
           </div>
-          <div className="modal-body">
-            <p>هل أنت متأكد من رغبتك في حذف هذا الموقع؟</p>
-            <p>الموقع: <strong>{bookmark?.name}</strong></p>
+          <div className="modal-body p-4">
+            <div className="text-center mb-3">
+              <i className="fas fa-exclamation-triangle text-warning" style={{ fontSize: '3rem' }}></i>
+            </div>
+            <h5 className="text-center mb-3">هل أنت متأكد من رغبتك في حذف هذا الموقع؟</h5>
+            <div className="alert alert-secondary">
+              <div className="d-flex align-items-center">
+                {bookmark?.iconType && (
+                  <span className={`bookmark-icon me-2 ${bookmark?.iconColor || 'bg-primary'}`}>
+                    <i className={bookmark.iconType}></i>
+                  </span>
+                )}
+                <strong>{bookmark?.name}</strong>
+                {bookmark?.url && (
+                  <small className="text-muted ms-2">({bookmark.url})</small>
+                )}
+              </div>
+            </div>
+            <p className="text-danger small mt-3 mb-0">
+              <i className="fas fa-info-circle me-1"></i>
+              هذا الإجراء لا يمكن التراجع عنه!
+            </p>
           </div>
           <div className="modal-footer">
             <button 
@@ -69,6 +88,7 @@ export default function DeleteModal({ bookmark, onClose }: DeleteModalProps) {
               data-bs-dismiss="modal"
               onClick={onClose}
             >
+              <i className="fas fa-times me-1"></i>
               إلغاء
             </button>
             <button 
@@ -80,7 +100,7 @@ export default function DeleteModal({ bookmark, onClose }: DeleteModalProps) {
               {isPending ? (
                 <>
                   <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                  <span className="ms-1">جاري...</span>
+                  <span className="ms-1">جاري الحذف...</span>
                 </>
               ) : (
                 <>
