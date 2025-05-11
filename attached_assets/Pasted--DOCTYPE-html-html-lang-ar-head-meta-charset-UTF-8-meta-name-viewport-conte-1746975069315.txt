@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>دليل المواقع</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+    }
+
+    .table-container {
+      max-height: 400px; /* Show 10 rows max */
+      overflow-y: auto;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      margin-bottom: 0;
+    }
+
+    th, td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+
+    /* Colors for icons */
+    .fa-comments { color: #007bff; } /* Blue */
+    .fa-openai { color: #ff4500; } /* Orange */
+    .fa-google { color: #db4437; } /* Red */
+    .fa-codepen { color: #000000; } /* Black */
+    .fa-reddit { color: #ff5700; } /* Red */
+    .fa-firebase { color: #ffcb2f; } /* Yellow */
+
+    @media (max-width: 768px) {
+      .table th, .table td {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mb-4">دليل المواقع</h2>
+
+    <div class="table-container">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>اسم الموقع</th>
+            <th>رابط الموقع</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Manually enter your 50+ rows here -->
+ 
+
+
+          <tr>
+            <td><i class="fas fa-comments  "></i>             أفضل خدمات استضافة المواقع لعام 2025
+            </td>
+            <td><a href="https://www.top10.com/hosting/ar-comparison?utm_source=google&kw=%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D8%B3%D8%AA%D8%B6%D8%A7%D9%81%D8%A9&c=503858140204&t=search&p=&m=b&adpos=&dev=c&devmod=&mobval=0&network=s&campaignid=12486691385&groupid=118488576843&targetid=kwd-799274805&interest=&physical=9211607&feedid=&a=22&ts=ar&topic=&test=&clicktype=&camtype=&gad_source=2&gclid=Cj0KCQjw2ZfABhDBARIsAHFTxGzfSEz181XEcjOT42ETG6-yLI9Ft4LCYtwtfZsgGXt3FSOSjSQzim0aAv8XEALw_wcB" target="_blank">
+              https://www.top10.com/hosting </a></td>
+          </tr> 
+          <tr>
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> استضافة المواقع   </td>
+              <td><a href="https://console.firebase.google.com/" target="_blank"> https://console.firebase.google.com/ </a></td>
+            </tr>
+            <tr>
+
+              <tr>
+                <td><i class="fas fa-comments  "></i>   الطريقة الجديدة رفع الموقع أو المشروع علي أستضافه جيت هاب Github
+                </td>
+                <td><a href="https://www.youtube.com/watch?v=8ig0hUpfIUY" target="_blank"> الطريقة الجديدة رفع الموقع أو المشروع علي أستضافه جيت هاب  </a></td>
+              </tr>
+              <tr>
+
+                <tr>
+                  <td><i class="fas fa-comments  "></i>   موقعي مدير الاشارات المرجعيه </td>
+                  <td><a href="https://bookmark-app-fpgt.onrender.com/" target="_blank"> موقعي مدير الاشارات المرجعيه </a></td>
+                </tr>
+                <tr>
+
+                  <tr>
+                    <td><i class="fas fa-comments  "></i>   github </td>
+                    <td><a href="https://github.com/settings/admin" target="_blank"> github  </a></td>
+                  </tr>
+                  <tr>
+          <tr>
+            <td><i class="fas fa-comments  "></i>   render </td>
+            <td><a href="https://render.com" target="_blank"> render </a></td>
+          </tr>
+          <tr>
+
+
+
+
+
+
+
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> استخدام   في موقعك يساهم في ضمان استمرارية العمل، وتحسين تجربة المستخدم، وتنبيهك فور حدوث أي مشكلة تقنية أو توقف في الخدمة، مما يساعدك على التفاعل السريع وحل المشاكل قبل أن تؤثر على الزوار والعملاء.  </td>
+              <td><a href="https://uptimerobot.com/" target="_blank"> UptimeRobot </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> وضع الملفات سويا  </td>
+              <td><a href="https://www.ilovepdf.com/tr/pdf-birlestirme" target="_blank"> pdf gemeinsam_zusammen </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> Lovable AI   </td>
+              <td><a href="https://www.youtube.com/watch?v=iiFkPBW06uw" target="_blank"> Lovable AI </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> لاجل ربط قائمه الرسائل بخدمه الجيميل  </td>
+              <td><a href="https://formspree.io/forms/manoborz/integration" target="_blank"> لاجل ربط قائمه الرسائل بخدمه الجيميل </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> انشاء بريد الكتروني عديده  </td>
+              <td><a href="https://temp-mail.org/" target="_blank"> انشاء بريد الكتروني عديده </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> تسجيل صوت الاستاذ اثناء اعطاء الدرس  </td>
+              <td><a href="https://www.instagram.com/reel/DIHiW3KMZH9/?igsh=MTk1YXplY2Q5Y2NncA==" target="_blank"> تسجيل صوت الاستاذ اثناء اعطاء الدرس </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> ....  </td>
+              <td><a href="" target="_blank"> .... </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> ....  </td>
+              <td><a href="" target="_blank"> .... </a></td>
+            </tr>
+            
+
+            <tr>
+              <td><i class="fas fa-comments  "></i> ....  </td>
+              <td><a href="" target="_blank"> .... </a></td>
+            </tr>
+            
+
+
+
+
+          <tr>
+            <td><i class="fas fa-comments icon"></i> موقع شات ديب سيك</td>
+            <td><a href="https://chat.deepseek.com/" target="_blank">https://chat.deepseek.com/</a></td>
+          </tr>
+
+          <tr>
+            <td><i class="fab fa-openai icon"></i> موقع شات جي بي تي</td>
+            <td><a href="https://chatgpt.com/" target="_blank">https://chatgpt.com/</a></td>
+          </tr>
+          <tr>
+            <td><i class="fab fa-google icon"></i> موقع جوجل هوست - العميل</td>
+            <td><a href="https://client.googiehost.com/" target="_blank">https://client.googiehost.com/</a></td>
+          </tr>
+          <tr>
+            <td><i class="fab fa-codepen icon"></i> موقع كود بن</td>
+            <td><a href="https://codepen.io/" target="_blank">https://codepen.io/</a></td>
+          </tr>
+          <tr>
+            <td><i class="fab fa-reddit icon"></i> موقع ريبلت</td>
+            <td><a href="https://replit.com/" target="_blank">https://replit.com/</a></td>
+          </tr>
+          <tr>
+            <td><i class="fab fa-firebase icon"></i> استوديو فايربيس</td>
+            <td><a href="https://studio.firebase.google.com/" target="_blank">https://studio.firebase.google.com/</a></td>
+          </tr>
+          <tr>
+            <td><i class="fab fa-firebase icon"></i> لوحة تحكم فايربيس</td>
+            <td><a href="https://console.firebase.google.com/" target="_blank">https://console.firebase.google.com/</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
