@@ -1,10 +1,7 @@
 import { useEffect } from "react";
 import BookmarkManager from "../components/BookmarkManager";
-import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
-  const { toast } = useToast();
-
   useEffect(() => {
     // Initialize Bootstrap manually to handle modal events
     const setupModals = () => {
@@ -38,19 +35,6 @@ export default function Home() {
       }
     };
   }, []);
-
-  // Add a small toast to notify the user the app is ready
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      toast({
-        title: "دليل المواقع جاهز للاستخدام",
-        description: "يمكنك الآن إضافة وتعديل وحذف المواقع المفضلة لديك",
-        variant: "default",
-      });
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [toast]);
 
   return (
     <div className="container py-4">
