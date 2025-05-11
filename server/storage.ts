@@ -1,4 +1,6 @@
 import { bookmarks, type Bookmark, type InsertBookmark, type UpdateBookmark } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getAllBookmarks(): Promise<Bookmark[]>;
@@ -8,62 +10,55 @@ export interface IStorage {
   deleteBookmark(id: number): Promise<boolean>;
 }
 
-export class MemStorage implements IStorage {
-  private bookmarks: Map<number, Bookmark>;
-  private currentId: number;
-
-  constructor() {
-    this.bookmarks = new Map();
-    this.currentId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getAllBookmarks(): Promise<Bookmark[]> {
-    return Array.from(this.bookmarks.values());
+    return await db.select().from(bookmarks).orderBy(bookmarks.createdAt);
   }
 
   async getBookmarkById(id: number): Promise<Bookmark | undefined> {
-    return this.bookmarks.get(id);
+    const results = await db.select().from(bookmarks).where(eq(bookmarks.id, id));
+    return results.length > 0 ? results[0] : undefined;
   }
 
   async createBookmark(bookmarkData: InsertBookmark): Promise<Bookmark> {
-    const id = this.currentId++;
-    const now = new Date();
-    
-    const bookmark: Bookmark = {
-      id,
+    const insertedBookmarks = await db.insert(bookmarks).values({
       name: bookmarkData.name,
       url: bookmarkData.url,
       iconType: bookmarkData.iconType || "fas fa-globe",
       iconColor: bookmarkData.iconColor || "bg-primary",
-      createdAt: now,
-    };
+    }).returning();
     
-    this.bookmarks.set(id, bookmark);
-    return bookmark;
+    return insertedBookmarks[0];
   }
 
   async updateBookmark(id: number, bookmarkData: UpdateBookmark): Promise<Bookmark | undefined> {
-    const bookmark = this.bookmarks.get(id);
+    const bookmark = await this.getBookmarkById(id);
     
     if (!bookmark) {
       return undefined;
     }
     
-    const updatedBookmark: Bookmark = {
-      ...bookmark,
-      name: bookmarkData.name,
-      url: bookmarkData.url,
-      iconType: bookmarkData.iconType || bookmark.iconType,
-      iconColor: bookmarkData.iconColor || bookmark.iconColor,
-    };
+    const updatedBookmarks = await db.update(bookmarks)
+      .set({
+        name: bookmarkData.name,
+        url: bookmarkData.url,
+        iconType: bookmarkData.iconType || bookmark.iconType,
+        iconColor: bookmarkData.iconColor || bookmark.iconColor,
+      })
+      .where(eq(bookmarks.id, id))
+      .returning();
     
-    this.bookmarks.set(id, updatedBookmark);
-    return updatedBookmark;
+    return updatedBookmarks.length > 0 ? updatedBookmarks[0] : undefined;
   }
 
   async deleteBookmark(id: number): Promise<boolean> {
-    return this.bookmarks.delete(id);
+    const deletedBookmarks = await db.delete(bookmarks)
+      .where(eq(bookmarks.id, id))
+      .returning();
+    
+    return deletedBookmarks.length > 0;
   }
 }
 
-export const storage = new MemStorage();
+// For backwards compatibility with existing app code, we'll keep the class name as 'storage'
+export const storage = new DatabaseStorage();
